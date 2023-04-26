@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>탭콘텐츠</title>
+  <link rel="stylesheet" href="./css/style3.css" type="text/css">
+</head>
+<body>
+  <h2>마루는 강쥐 탭콘텐츠 구현</h2>
+  <div id="wrap">
+    <div class="img_box">
+      <img src="./images/image1.png" alt="이미지" id="img">
+    </div>
+    <ul class="list">
+      <li>햅삐마루</li>
+      <li>울먹마루</li>
+      <li>삐죽마루</li>
+      <li>절망마루</li>
+    </ul>
+  </div>
+
+  <h2>로그인 버튼을 만들고 @mixin과 매개변수 대입하기</h2>
+  <div id="wrap2">
+    <ul class="sns">
+      <li class="login"><a href="" title="">로그인</a></li>
+      <li class="naver"><span></span><a href="" title="">네이버 로그인</a></li>
+      <li class="kakao"><span></span><a href="" title="">카카오 로그인</a></li>
+    </ul>
+  </div>
+  <script>
+    let n = 1;
+    const list = document.querySelectorAll('.list > li');
+
+    list.forEach((e,index)=>{
+      e.onclick=()=>{
+        n = index+1;
+        // console.log(n);
+        imgChange();    
+      }
+    });
+
+    function imgChange(){
+      for(i=0;i<list.length;i++){
+        list[i].style.background='none';
+        list[i].style.fontWeight='normal';
+      }
+      list[n-1].style.background='#ffc8c8';
+      list[n-1].style.fontWeight='bold';
+      document.getElementById('img').src='./images/image'+n+'.png';
+    }
+  </script>
+</body>
+</html>

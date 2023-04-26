@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+*{margin: 0;padding: 0;}
+ul, li{
+  list-style: none;
+}
+#wrap{
+  margin: 0 auto;
+  padding: 50px;
+  font-family: 'Noto Sans KR', '맑은 고딕', arial, sans-serif;
+  text-align: center;
+}
+h2{
+  color: #413c37;
+  line-height: 80px;
+  border: 2px dotted #413c37;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+li{
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: #e9e9e9;
+  margin-bottom: 10px;
+  border-radius: 50px;
+}
+@mixin box($b_w){
+  position: relative;
+  left: 0;
+  width: $b_w;
+  height: 40px;
+}
+li:first-child div{@include box(50%);}
+li:nth-child(2) div{@include box(50%);}
+li:nth-child(3) div{@include box(80%);}
+li:nth-child(4) div{@include box(90%);}
+li:nth-child(5) div{@include box(90%);}
+li:nth-child(6) div{@include box(70%);}
+li:nth-child(7) div{@include box(60%);}
+li:nth-child(8) div{@include box(50%);}
+li:nth-child(9) div{@include box(50%);}
+li:nth-child(10) div{@include box(100%);}
+li:last-child div{@include box(80%);}
+li div::after{
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  background: #76bda8;
+  border-radius: 50px;
+  animation: pro .7s 1 forwards ease-in;
+}
+li p{
+  color: #fff;
+  position: absolute;
+  left: 20px;
+  z-index: 1;
+  line-height: 40px;
+}
+li span{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #413c37;
+  color: #fff;
+  right: 0;
+  z-index: 1;
+  font-size: 12px;
+  line-height: 40px;
+  border-radius: 50px;
+}
+@keyframes pro{
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 100%;
+  }
+}

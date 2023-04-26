@@ -1,0 +1,51 @@
+// style.css
+
+// wrap의 가로크기 변수
+$max-width: 1180px;
+
+@function columns($number: 1, $all: 12){
+  @return $max-width*($number/$all);
+}
+
+.wrap{
+  width: $max-width;
+  margin: 0 auto;
+  border: 3px solid #000;
+  .box01{
+    background: #f00;
+    width: columns();
+    height: 100px;
+  }
+  .box02{
+    background: #0f0;
+    width: columns(6);
+    height: 100px;
+  }
+  .box03{
+    background: #00f;
+    width: columns(12);
+    height: 100px;
+  }
+}
+
+// 내장함수로 서식변경하기
+$mainColor: #e134ad;
+.button{
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background: $mainColor;
+  color: #fff;
+  cursor: pointer;
+  &.btn02{
+    background: lighten($mainColor, 20%);
+  }
+}
+
+@function my-lighten($num){
+  @return 0.1*$num;
+}
+
+.btn03{
+  opacity: my-lighten(2);
+}

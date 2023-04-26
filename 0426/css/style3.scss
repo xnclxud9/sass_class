@@ -1,0 +1,165 @@
+*{margin: 0;padding: 0;font-size: 30px;}
+
+$mobile: 767px;
+$tablet: 1023px;
+$desktop: 1024px;
+
+@mixin mobile{
+  @media (max-width: $mobile){
+    @content;
+  }
+}
+@mixin tablet{
+  @media (min-width: $mobile+1) and (max-width: 1023px){
+    @content;
+  }
+}
+@mixin desktop{
+  @media (min-width: $desktop){
+    @content;
+  }
+}
+
+@mixin wrap($width){
+  width: $width;
+  margin: 0 auto;
+}
+@mixin header($height){
+  width: 100%;
+  height: $height;
+  background: lightblue;
+}
+@mixin visual{
+  width: 100%;
+  height: 300px;
+  background: lightyellow;
+}
+@mixin cont($height){
+  width: 100%;
+  height: $height;
+  display: flex;
+}
+@mixin box01($width, $bg){
+  width: $width;
+  height: 270px;
+  background: $bg;
+}
+@mixin box02($width, $bg){
+  width: $width;
+  height: 150px;
+  background: $bg;
+}
+@mixin footer{
+  width: 100%;
+  height: 110px;
+  background: lightseagreen;
+}
+
+@include mobile{
+  #wrap{
+    @include wrap(100%);
+    header{
+      @include header(80px);
+    }
+    #visual{
+      @include visual;
+    }
+    #cont01{
+      @include cont(auto);
+      flex-direction: column;
+      gap: 10px;
+      article{
+        @include box01(100%, salmon);
+      }
+    }
+    #cont02{
+      @include cont(auto);
+      flex-direction: column;
+      gap: 10px;
+      article{
+        @include box02(100%, slateblue);
+      }
+    }
+    footer{
+      @include footer;
+    }
+  }
+}
+
+@include tablet{
+  #wrap{
+    @include wrap(100%);
+    header{
+      @include header(123px);
+    }
+    #visual{
+      @include visual;
+    }
+    #cont01{
+      @include cont(auto);
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      article:not(.center){
+        @include box01(49.3%, salmon);
+      }
+      article:first-child{margin-right: 10px;}
+      .center{
+        @include box01(100%, salmon);
+        margin-top: 10px;
+        order: 1;
+      }
+    }
+    #cont02{
+      @include cont(auto);
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      article:not(.center){
+        @include box02(49.3%, slateblue);
+      }
+      article:first-child{margin-right: 10px;}
+      .center{
+        @include box02(100%, slateblue);
+        margin-top: 10px;
+        order: 1;
+      }
+    }
+    footer{
+      @include footer;
+    }
+  }
+}
+
+@include desktop{
+  #wrap{
+    @include wrap(940px);
+    header{
+      @include header(123px);
+    }
+    #visual{
+      @include visual;
+    }
+    #cont01{
+      @include cont(270px);
+      article:not(.center){
+        @include box01(280px, salmon);
+      }
+      .center{
+        @include box01(380px, salmon);
+        margin: 0 10px;
+      }
+    }
+    #cont02{
+      @include cont(150px);
+      article:not(.center){
+        @include box02(280px, slateblue);
+      }
+      .center{
+        @include box02(380px, slateblue);
+        margin: 0 10px;
+      }
+    }
+    footer{
+      @include footer;
+    }
+  }
+}

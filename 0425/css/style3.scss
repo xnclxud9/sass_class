@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+$color: #333;
+$margin: 0 auto;
+
+*{margin: 0;padding: 0;}
+body{
+  font-family: "Noto Sans KR", "맑은 고딕", arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  color: $color;
+}
+ul, li{list-style: none;}
+
+h2{
+  line-height: 100px;
+}
+#wrap{
+  width: 700px;
+  margin: $margin;
+  display: flex;
+  border: 2px solid salmon;
+}
+.img_box{
+  img{
+    width: 400px;
+    display: block;
+  }
+}
+.list{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style: none;
+  li{
+    width: 100%;
+    height: 105px;
+    line-height: 105px;
+    transition: .3s;
+    border: 1px solid salmon;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  li:first-child{
+    font-weight: bold;
+    background: #ffc8c8;
+  }
+  li:hover{
+    background: #ffc8c8;
+  }
+}
+
+@mixin sns($size, $x, $y){
+  background-size: $size;
+  background-image: url('../images/sns_icon.png');
+  background-position: $x $y;
+}
+#wrap2{
+  width: 600px;
+  margin: $margin;
+  display: flex;
+}
+.sns{
+  display: flex;
+  gap: 10px;
+  li{
+    position: relative;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  span{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+  }
+  .login{
+    background: #c53232;
+  }
+  .naver{
+    background: #47b748;
+  }
+  .kakao{
+    background: #ffe800;
+  }
+  .naver span{
+    @include sns(600px, -357px, 318px);
+    top: 3px;
+    left: 5px
+  }
+  .kakao span{
+    @include sns(500px, -129px, 152px);
+    top: 0;
+    left: 5px
+  }
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+}
